@@ -11,8 +11,8 @@ interface Props
 const InputWithLabel = ({ type, placeholder, label, ...props }: Props) => {
   return (
     <div className="flex flex-col">
-      <label className="font-bold text-xs text-gray-300 dark:text-neutral-400">
-        {label.toUpperCase()}
+      <label className="font-bold text-xs uppercase text-gray-300 dark:text-neutral-400">
+        {label}
       </label>
       <input
         placeholder={placeholder}
