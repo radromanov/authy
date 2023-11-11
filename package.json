@@ -1,0 +1,10 @@
+{
+  "name": "authy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Radostin R. <radromanov@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev:be": "cd backend && yarn dev"
+  }
+}
