@@ -5,7 +5,7 @@ const ICON_SIZE = 24;
 
 const ThemeSlider = () => {
   return (
-    <div className="relative flex w-fit px-1 py-1 rounded-full bg-violet-300 dark:bg-neutral-700">
+    <div className="absolute flex right-[1rem] w-fit px-1 py-1 rounded-full bg-violet-300 dark:bg-neutral-700">
       <div className="flex gap-2 bg-violet-400 dark:bg-neutral-500 rounded-full opacity-75 px-1 py-1">
         <Icon
           theme="light"

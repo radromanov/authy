@@ -12,3 +12,13 @@ html.dark {
   background-color: black;
   color: whitesmoke;
 }
+
+html.dark input {
+  background-color: rgb(38 38 38);
+  color: whitesmoke;
+}
+
+input {
+  background-color: rgb(138, 36, 233);
+  color: whitesmoke;
+}
