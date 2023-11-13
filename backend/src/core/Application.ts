@@ -4,6 +4,9 @@ import helmet from "helmet";
 import cors from "cors";
 
 import { Config } from "./Config";
+import { pageNotFound } from "../utils/pageNotFound";
+import { globalErrorHandler } from "../utils/globalErrorHandler";
+import { Exception } from "./Exception";
 
 export class Application {
   private router: Router;
@@ -12,6 +15,10 @@ export class Application {
     this.router = Router();
   }
 
+  /**
+   * @todo Error handling - global and 404
+   * @todo Connect front-end to back-end
+   */
   setup() {
     this.setupMiddlewares();
     this.setupRoutes([
@@ -19,7 +26,16 @@ export class Application {
         prefix: "/health",
         controller: (_req, res) => res.status(200).json({ health: "ok" }),
       },
+      {
+        prefix: "/error",
+        controller: (_req, _res) => {
+          throw new Exception("Some error", "Internal Server Error");
+        },
+      },
     ]);
+
+    this.app.use(pageNotFound);
+    this.app.use(globalErrorHandler);
 
     return this.app;
   }
