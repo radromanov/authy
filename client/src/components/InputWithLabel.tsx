@@ -16,7 +16,7 @@ const InputWithLabel = ({ type, placeholder, label, ...props }: Props) => {
       </label>
       <input
         placeholder={placeholder}
-        className="px-2 rounded-md placeholder:text-gray-300 dark:placeholder:text-neutral-400 focus:bg-violet-600 active:bg-violet-600 hover:bg-violet-600 dark:focus:bg-neutral-700 dark:active:bg-neutral-700 dark:hover:bg-neutral-700 transition-colors"
+        className="px-2 rounded-md placeholder:text-gray-300 placeholder:italic dark:placeholder:text-neutral-400 focus:bg-violet-600 active:bg-violet-600 hover:bg-violet-600 dark:focus:bg-neutral-700 dark:active:bg-neutral-700 dark:hover:bg-neutral-700 transition-colors"
         type={type}
         {...props}
       />
