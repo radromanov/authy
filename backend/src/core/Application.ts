@@ -4,9 +4,12 @@ import helmet from "helmet";
 import cors from "cors";
 
 import { Config } from "./Config";
+import { Exception } from "./Exception";
 import { pageNotFound } from "../utils/pageNotFound";
 import { globalErrorHandler } from "../utils/globalErrorHandler";
-import { Exception } from "./Exception";
+import { UserModule } from "../api/user/user.module";
+import { UserController } from "../api/user/user.controller";
+import { UserService } from "../api/user/user.service";
 
 export class Application {
   private router: Router;
@@ -16,21 +19,19 @@ export class Application {
   }
 
   /**
-   * @todo Error handling - global and 404
    * @todo Connect front-end to back-end
    */
   setup() {
+    const userRoutes = new UserModule(
+      this.app,
+      new UserController(new UserService())
+    ).init();
+
     this.setupMiddlewares();
     this.setupRoutes([
       {
-        prefix: "/health",
-        controller: (_req, res) => res.status(200).json({ health: "ok" }),
-      },
-      {
-        prefix: "/error",
-        controller: (_req, _res) => {
-          throw new Exception("Some error", "Internal Server Error");
-        },
+        prefix: userRoutes.prefix,
+        controller: userRoutes.controller,
       },
     ]);
 
@@ -61,7 +62,7 @@ export class Application {
   private setupRoutes(
     modules: {
       prefix: string;
-      controller: (req: Request, res: Response) => void;
+      controller: Router;
     }[]
   ) {
     for (const mod of modules) {

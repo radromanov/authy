@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { Exception } from "../core/Exception";
+import { Exception } from "../core";
 
 /**
  * @todo Add different responses based on the `NODE_ENV` to provide more or less information

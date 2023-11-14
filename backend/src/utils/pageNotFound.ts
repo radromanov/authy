@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { Exception } from "../core/Exception";
+import { Exception } from "../core";
 
 export const pageNotFound = (
   req: Request,
